@@ -31,8 +31,20 @@ services:
       MYSQL_DATABASE: db
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -u root -p$${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - some-network
     volumes:
       - mysql-data:/var/lib/mysql
+
+networks:
+  some-network:
+    driver: bridge
 
 volumes:
   kafka-data:
