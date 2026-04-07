@@ -21,5 +21,19 @@ services:
     volumes:
       - kafka-data:/var/lib/kafka/data
 
+  db-01:
+    image: mysql:9.6.0
+    container_name: mysql-db-01
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    volumes:
+      - mysql-data:/var/lib/mysql
+
 volumes:
   kafka-data:
+  mysql-data:
