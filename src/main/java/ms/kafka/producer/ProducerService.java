@@ -14,10 +14,8 @@ public class ProducerService {
 	private String producerTopicName;
 	private final KafkaTemplate<String, Food> kafkaFoodTemplate;
 	
-	
-	
 	public void publishToKafkaTopic(Food food) {
-		System.out.println("Kafka topic: " + producerTopicName);
+		System.out.println("\nKafka topic: " + producerTopicName);
 		kafkaFoodTemplate.send(producerTopicName, food);
 	}
 }

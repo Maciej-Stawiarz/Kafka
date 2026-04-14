@@ -11,7 +11,7 @@ public class ProductErrorAdvisor {
 	@ExceptionHandler(IllegalArgumentException.class)
 	public ResponseEntity<String> illegalArgumentExceptionHandler(Throwable throwable) {
 		return new ResponseEntity<>(
-				"This is a message from exception handler!",
+				throwable.getMessage(),
 				HttpStatus.BAD_REQUEST
 		);
 	}
