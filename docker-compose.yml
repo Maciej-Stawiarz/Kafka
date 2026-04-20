@@ -1,4 +1,12 @@
 services:
+  producer:
+    image: ms/kafka_producer
+    container_name: kafka_producer
+    ports:
+      - "8080:8080"
+    networks:
+      - some-network
+
   kafka-01:
     image: confluentinc/cp-kafka:7.8.3
     container_name: kafka_01
